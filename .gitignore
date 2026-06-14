@@ -1,0 +1,16 @@
+.DS_Store
+
+# LaTeX build artifacts / cache
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.synctex(busy)
+*.toc
+*.lof
+*.lot
+main.pdf
