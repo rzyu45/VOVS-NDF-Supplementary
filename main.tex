@@ -55,13 +55,14 @@ Hence the asymptotic step-ratio relative to BDF-k is}
 \end{equation}
 
 \rev{The accuracy target is determined from the second-order formula, because this is the highest order in the selected family for which A-stability can be retained.
+For the selected coefficient, the formula is in fact L-stable, as shown below.
 The stability calculation below shows that NDF-2 is A-stable exactly when}
 \begin{equation}\label{eq:app_kappa_second_order_interval}
 \rev{-\frac{1}{9}\leq\kappa\leq\frac{1}{3}.}
 \end{equation}
 \rev{On the negative branch, $C_2(\kappa)=1/3+3\kappa/2$ decreases as $\kappa$ decreases.
 The unconstrained zero of this leading constant is $\kappa=-2/9$, which violates \eqref{eq:app_kappa_second_order_interval}.
-Therefore the best A-stable second-order choice is}
+Therefore the best second-order choice under the A-stability constraint is}
 \begin{equation}\label{eq:app_kappa_second_order}
 \rev{\kappa_2=-\frac{1}{9},\quad C_2(\kappa_2)=\frac{1}{6}.}
 \end{equation}
@@ -114,6 +115,13 @@ The selected value $\kappa_1=-0.1850$ lies in this interval, so the first-order 
 \end{equation}
 \rev{Therefore $\Re z_2\geq0$ for every $c\in[-1,1]$ exactly when \eqref{eq:app_kappa_second_order_interval} holds.
 The selected value $\kappa_2=-1/9$ lies at the accuracy-optimal A-stable endpoint.}
+
+\rev{The selected first- and second-order formulas are further L-stable.
+Indeed, write $\delta=1-r^{-1}$ in \eqref{eq:app_kappa_stability_polynomial}.
+For $k=1$ and $k=2$, the selected $\kappa_k$ values are nonzero, so the highest-degree term $-\kappa_k\gamma_k\delta^{k+1}$ has a nonzero coefficient.
+Hence $|\delta|\to\infty$ as $|z|\to\infty$ for every amplification root.
+Since $r=(1-\delta)^{-1}$, all amplification roots satisfy $r\to0$ at infinity.
+Together with the A-stability shown above, this proves L-stability of the selected first- and second-order formulas.}
 
 \rev{For $k=3$, the boundary is not confined to the closed right half-plane, so the formula is not A-stable.
 The real and imaginary parts of \eqref{eq:app_kappa_root_locus} are}
