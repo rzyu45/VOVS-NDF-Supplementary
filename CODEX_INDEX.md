@@ -9,7 +9,7 @@ Supplementary material for the manuscript TPWRS-02134-2025, "Acceleration of Gas
 
 ## Files
 
-- `main.tex` — entry point. Single-column IEEEtran. Holds the four appendices moved out of the main manuscript. Sections, equations, figures, and tables are numbered with an "S" prefix so the manuscript can refer to them as "Section S1", etc.
+- `main.tex` — entry point. Single-column IEEEtran. Holds supplementary sections moved out of, or supporting, the main manuscript. Sections, equations, figures, and tables are numbered with an "S" prefix so the manuscript can refer to them as "Section S1", etc.
 - `abbr.tex` — macro/abbreviation definitions, copied from `NDF-paper/abbr.tex`. The `\rev` highlighting macro is redefined as the identity here, because the entire supplement is new R1 material.
 - `supp.bib` — independent bibliography. Contains only the four references cited in the moved appendices: `sauerPowerSystemDynamics2018`, `cuiHybridSymbolicNumericFramework2021`, `rowenSimplifiedMathematical1983`, `milanoPowerSystemModelling2010`.
 - `fig/leak_oscillation.pdf` — figure for the gas-PDE numerical-dispersion section, copied from `NDF-paper/fig/`.
@@ -20,12 +20,12 @@ Supplementary material for the manuscript TPWRS-02134-2025, "Acceleration of Gas
 | Supplement section | Title | Referenced in manuscript as |
 |---|---|---|
 | S1 | Selection of the NDF damping coefficient | Section S1 (was Appendix D) |
-| S2 | Local convergence of simplified Newton with delayed Jacobian and implementation-level convergence monitor | Section S2 (was Appendix E) |
+| S2 | Implementation-level convergence monitor | Section S2 |
 | S3 | Numerical Dispersion in the Spatial Discretization of the Gas-Network PDEs | Section S3 (was Appendix F) |
 | S4 | Electric Power System Component Models | Section S4 (was Appendix G) |
 
-The manuscript retains Appendices A–C (the two propositions' proofs and the backward-difference step-size transformation derivation).
+The manuscript retains the two propositions' proofs, the backward-difference step-size transformation derivation, and the local convergence proof for simplified Newton with a delayed Jacobian.
 
 ## Provenance
 
-These four sections were moved verbatim out of `NDF-paper/appendix.tex` during the R1 revision. Transformations applied on move: `\subsection` → `\section`; full-width `figure*` → single-column `figure`; the one cross-document `\eqref{eq: trunc}` was reworded to prose referring to the main manuscript. All internal equation/figure/table cross-references resolve within this document.
+The supplementary material originally held four moved appendix sections during the R1 revision. The local convergence proof for simplified Newton with a delayed Jacobian has been moved back to the manuscript appendix, while S2 retains only the implementation-level convergence monitor. Transformations applied on move: `\subsection` → `\section`; full-width `figure*` → single-column `figure`; the one cross-document `\eqref{eq: trunc}` was reworded to prose referring to the main manuscript. All internal equation/figure/table cross-references resolve within this document.

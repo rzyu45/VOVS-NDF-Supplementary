@@ -146,95 +146,11 @@ These two requirements are incompatible, so no third-order member of this one-pa
 \end{equation}
 \rev{Thus the selected third-order formula sacrifices full A-stability, which no third-order formula in this root-locus calculation attains, but it retains a broad $A(\alpha)$ stability wedge while matching the leading-error step-ratio target in \eqref{eq:app_kappa_chi_star}.}
 
-\section{Local convergence of simplified Newton with delayed Jacobian}
-\label{app:simplified_newton}
-
-\rev{For one event-free NDF step, define the discrete residual}
-\begin{equation}\label{eq:app_simplified_newton_residual}
-\rev{\begin{aligned}
-G_h(y)&=M\qty(y-y_{n+1}^{(0)}+\Psi_n)-\alpha_k f(t_{n+1},y),\\
-\alpha_k&=\frac{h}{(1-\kappa)\gamma_k},
-\end{aligned}}
-\end{equation}
-\rev{where}
-\begin{equation}\label{eq:app_simplified_newton_psi}
-\rev{\Psi_n=\frac{1}{(1-\kappa)\gamma_k}\sum_{m=1}^{k}\gamma_m\nabla^m y_n.}
-\end{equation}
-\rev{The accepted endpoint satisfies $G_h(y_{n+1})=0$.
-Let $y^\ast$ denote this discrete solution.
-The exact Newton matrix at $y^\ast$ is}
-\begin{equation}\label{eq:app_exact_newton_matrix}
-\rev{A_\ast=G_h'(y^\ast)=M-\alpha_kJ_\ast,\quad
-J_\ast=\pdv{f}{y}(t_{n+1},y^\ast).}
-\end{equation}
-\rev{The delayed Jacobian strategy uses a cached Jacobian $\widehat J$ and the corresponding cached Newton matrix}
-\begin{equation}\label{eq:app_cached_newton_matrix}
-\rev{\widehat A=M-\alpha_k\widehat J.}
-\end{equation}
-\rev{The simplified Newton update is}
-\begin{equation}\label{eq:app_simplified_newton_iteration}
-\rev{\widehat A\Delta^{(i)}=-G_h(y^{(i)}),\quad
-y^{(i+1)}=y^{(i)}+\Delta^{(i)}.}
-\end{equation}
-
-\rev{Assume that $f$ is twice continuously differentiable with respect to $y$ near $y^\ast$, that $A_\ast$ and $\widehat A$ are nonsingular, and that all norms below are induced by a fixed vector norm.
-Further assume that}
-\begin{equation}\label{eq:app_contraction_condition}
-\rev{q=\norm{I-\widehat A^{-1}A_\ast}<1.}
-\end{equation}
-\rev{Then the simplified Newton iteration is locally linearly convergent.
-This is weaker than the quadratic convergence of full Newton iteration, and it is the price of reusing the cached matrix $\widehat A$.
-To see the local linear bound, set $e^{(i)}=y^{(i)}-y^\ast$.
-Taylor expansion of $G_h$ at $y^\ast$ gives}
-\begin{equation}\label{eq:app_taylor_residual}
-\rev{G_h(y^{(i)})=A_\ast e^{(i)}+R(e^{(i)}),\quad
-\norm{R(e^{(i)})}\leq C\norm{e^{(i)}}^2}
-\end{equation}
-\rev{for sufficiently small $\norm{e^{(i)}}$ and some local constant $C>0$.
-Substituting \eqref{eq:app_taylor_residual} into \eqref{eq:app_simplified_newton_iteration} yields}
-\begin{equation}\label{eq:app_error_recursion}
-\rev{e^{(i+1)}=\qty(I-\widehat A^{-1}A_\ast)e^{(i)}
--\widehat A^{-1}R(e^{(i)}).}
-\end{equation}
-\rev{Taking norms gives}
-\begin{equation}\label{eq:app_error_bound}
-\rev{\norm{e^{(i+1)}}\leq
-\qty(q+\norm{\widehat A^{-1}}C\norm{e^{(i)}})\norm{e^{(i)}}.}
-\end{equation}
-\rev{Choose a constant $\theta$ and a local radius $\varrho>0$ such that $q<\theta<1$ and}
-\begin{equation}\label{eq:app_radius_condition}
-\rev{q+\norm{\widehat A^{-1}}C\varrho\leq\theta<1.}
-\end{equation}
-\rev{If the initial iterate satisfies $\norm{e^{(0)}}\leq\varrho$, then \eqref{eq:app_error_bound} gives $\norm{e^{(i+1)}}\leq\theta\norm{e^{(i)}}\leq\varrho$ by induction.
-Hence the iterates remain in the local ball and converge linearly to $y^\ast$.}
-
-\rev{The contraction factor is directly related to Jacobian drift.
-Let $\Delta J=J_\ast-\widehat J$.
-Since}
-\begin{equation}\label{eq:app_matrix_difference}
-\rev{\widehat A-A_\ast=\alpha_k\Delta J,}
-\end{equation}
-\rev{we have}
-\begin{equation}\label{eq:app_contraction_bound}
-\rev{I-\widehat A^{-1}A_\ast
-=\widehat A^{-1}\qty(\widehat A-A_\ast)
-=\alpha_k\widehat A^{-1}\Delta J,}
-\end{equation}
-\rev{and hence}
-\begin{equation}\label{eq:app_q_bound}
-\rev{q\leq|\alpha_k|\norm{\widehat A^{-1}\Delta J}.}
-\end{equation}
-\rev{This bound shows why delayed Jacobian reuse is conditional.
-For the selected NDF coefficients, $\alpha_k$ is positive and proportional to $h$, so reducing the step size reduces $|\alpha_k|$.
-A Jacobian refresh is intended to reduce $\Delta J$ by replacing a stale Jacobian with one evaluated closer to the current discrete solution.
-Both actions improve the local contraction estimate when they reduce the factors in \eqref{eq:app_q_bound}.
-In the local linear regime, the observed ratio $\norm{\Delta^{(i+1)}}/\norm{\Delta^{(i)}}$ estimates the contraction factor up to the quadratic remainder.
-Thus, the implementation must monitor the observed Newton update or residual contraction and refresh the Jacobian, refactorize the Newton matrix, or reduce the step size when the contraction deteriorates.}
-
-\subsection{Implementation-level convergence monitor}
+\section{Implementation-level convergence monitor}
 \label{app:simplified_newton_monitor}
 
-\rev{The reported simulations use the following correction-norm monitor.
+\rev{The main manuscript appendix gives the local convergence proof for simplified Newton with a delayed Jacobian.
+The reported simulations use the following correction-norm monitor.
 For component $j$, define the scale}
 \begin{equation}\label{eq:app_newton_scale}
 \rev{s_j=\max\qty{\qty|y_{n,j}|,\qty|y_{n+1,j}^{(i)}|,\eta_j/\tau},}
