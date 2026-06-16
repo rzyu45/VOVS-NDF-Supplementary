@@ -20,7 +20,7 @@ Supplementary material for the manuscript TPWRS-02134-2025, "Acceleration of Gas
 | Supplement section | Title | Referenced in manuscript as |
 |---|---|---|
 | S1 | Selection of the NDF damping coefficient | Section S1 (was Appendix D) |
-| S2 | Local convergence of simplified Newton with delayed Jacobian | Section S2 (was Appendix E) |
+| S2 | Local convergence of simplified Newton with delayed Jacobian and implementation-level convergence monitor | Section S2 (was Appendix E) |
 | S3 | Numerical Dispersion in the Spatial Discretization of the Gas-Network PDEs | Section S3 (was Appendix F) |
 | S4 | Electric Power System Component Models | Section S4 (was Appendix G) |
 
