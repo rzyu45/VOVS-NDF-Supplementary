@@ -1,6 +1,6 @@
 # Supplementary-material index
 
-Supplementary material for the manuscript TPWRS-02134-2025, "Acceleration of Gas-to-Power Cascading Fault Simulation Using Variable-Order-Variable-Step Numerical Differential Formulae". This is an independent git repository at the same level as `R1/response/`. It is a single-column IEEEtran document with its own bibliography (`supp.bib`), built with pdflatex + bibtex.
+Supplementary material for the manuscript TPWRS-02134-2025, "Acceleration of Gas-to-Power Cascading Fault Simulation Using Variable-Order-Variable-Step Numerical Differentiation Formulae". This is an independent git repository at the same level as `R1/response/`. It is a single-column IEEEtran document with its own bibliography (`supp.bib`), built with pdflatex + bibtex.
 
 ## Build
 
@@ -10,9 +10,11 @@ Supplementary material for the manuscript TPWRS-02134-2025, "Acceleration of Gas
 ## Files
 
 - `main.tex` — entry point. Single-column IEEEtran. Holds supplementary sections moved out of, or supporting, the main manuscript. Sections, equations, figures, and tables are numbered with an "S" prefix so the manuscript can refer to them as "Section S1", etc.
+- `main.pdf` — compiled supplementary material kept in the repository root for direct access.
 - `abbr.tex` — macro/abbreviation definitions, copied from `NDF-paper/abbr.tex`. The `\rev` highlighting macro is redefined as the identity here, because the entire supplement is new R1 material.
 - `supp.bib` — independent bibliography. Contains only the four references cited in the moved appendices: `sauerPowerSystemDynamics2018`, `cuiHybridSymbolicNumericFramework2021`, `rowenSimplifiedMathematical1983`, `milanoPowerSystemModelling2010`.
 - `fig/leak_oscillation.pdf` — figure for the gas-PDE numerical-dispersion section, copied from `NDF-paper/fig/`.
+- `README.md`, `LICENSE` — public-facing repository overview and CC-BY-4.0 license.
 - `.latexmkrc`, `.gitignore` — build config and ignore rules.
 
 ## Section map (supplement ↔ manuscript reference)
