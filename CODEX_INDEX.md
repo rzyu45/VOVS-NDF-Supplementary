@@ -22,12 +22,11 @@ Supplementary material for the manuscript TPWRS-02134-2025, "Acceleration of Gas
 | Supplement section | Title | Referenced in manuscript as |
 |---|---|---|
 | S1 | Selection of the NDF damping coefficient | Section S1 (was Appendix D) |
-| S2 | Implementation-level convergence monitor | Section S2 |
-| S3 | Numerical Dispersion in the Spatial Discretization of the Gas-Network PDEs | Section S3 (was Appendix F) |
-| S4 | Electric Power System Component Models | Section S4 (was Appendix G) |
+| S2 | Numerical Dispersion in the Spatial Discretization of the Gas-Network PDEs | Section S2 (was Appendix F) |
+| S3 | Electric Power System Component Models | Section S3 (was Appendix G) |
 
 The manuscript retains the two propositions' proofs, the backward-difference step-size transformation derivation, and the local convergence proof for simplified Newton with a delayed Jacobian.
 
 ## Provenance
 
-The supplementary material originally held four moved appendix sections during the R1 revision. The local convergence proof for simplified Newton with a delayed Jacobian has been moved back to the manuscript appendix, while S2 retains only the implementation-level convergence monitor. Transformations applied on move: `\subsection` → `\section`; full-width `figure*` → single-column `figure`; the one cross-document `\eqref{eq: trunc}` was reworded to prose referring to the main manuscript. All internal equation/figure/table cross-references resolve within this document.
+The supplementary material originally held four moved appendix sections during the R1 revision. The local convergence proof for simplified Newton with a delayed Jacobian has been moved back to the manuscript appendix, and the former implementation-level convergence-monitor section has been removed after its threshold logic was integrated into the main manuscript. Transformations applied on move: `\subsection` → `\section`; full-width `figure*` → single-column `figure`; the one cross-document `\eqref{eq: trunc}` was reworded to prose referring to the main manuscript. All internal equation/figure/table cross-references resolve within this document.

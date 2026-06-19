@@ -1,6 +1,6 @@
 \documentclass[journal,onecolumn]{IEEEtran}
 
-\usepackage{cite}
+ \usepackage{cite}
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{graphicx}
 \usepackage{siunitx}
@@ -145,35 +145,6 @@ These two requirements are incompatible, so no third-order member of this one-pa
 \rev{\alpha_3(\kappa_3)=80.42^\circ.}
 \end{equation}
 \rev{Thus the selected third-order formula sacrifices full A-stability, which no third-order formula in this root-locus calculation attains, but it retains a broad $A(\alpha)$ stability wedge while matching the leading-error step-ratio target in \eqref{eq:app_kappa_chi_star}.}
-
-\section{Implementation-level convergence monitor}
-\label{app:simplified_newton_monitor}
-
-\rev{The main manuscript appendix gives the local convergence proof for simplified Newton with a delayed Jacobian.
-The reported simulations use the following correction-norm monitor.
-For component $j$, define the scale}
-\begin{equation}\label{eq:app_newton_scale}
-\rev{s_j=\max\qty{\qty|y_{n,j}|,\qty|y_{n+1,j}^{(i)}|,\eta_j/\tau},}
-\end{equation}
-\rev{where $\eta_j$ and $\tau$ are the absolute and relative tolerances.
-The monitored correction norm is}
-\begin{equation}\label{eq:app_newton_correction_norm}
-\rev{\epsilon_i=\norm{\Delta^{(i)}}_W=\max_j\frac{\qty|\Delta_j^{(i)}|}{s_j}.}
-\end{equation}
-\rev{For $i\geq2$, the observed contraction factor is updated by}
-\begin{equation}\label{eq:app_newton_rho_update}
-\rev{\rho_i=\max\qty{0.9\rho_{i-1},\epsilon_i/\epsilon_{i-1}}.}
-\end{equation}
-\rev{The correction is classified as too slow when $\epsilon_i>0.9\epsilon_{i-1}$.
-Otherwise, the remaining nonlinear-iteration error is estimated as $\epsilon_i\rho_i/(1-\rho_i)$.
-The corrector is accepted when this estimate is below $0.5\tau$.
-For the first correction in a step, a contraction factor inherited from the preceding accepted step is used only under the stricter test $\epsilon_1\rho/(1-\rho)\leq0.05\tau$.
-If the estimated error cannot fall below $0.5\tau$ within the remaining Newton iterations, the correction is also classified as too slow.}
-
-\rev{When the monitor classifies the correction as too slow and the step is using a reused Jacobian, the Jacobian is refreshed and the Newton matrix is refactorized.
-If the current Jacobian has already been used and convergence remains insufficient, the attempted step is rejected and retried with a smaller step size.
-The reported implementation uses $h\leftarrow0.3h$ for this retry.
-The constants in \eqref{eq:app_newton_rho_update} and in the acceptance tests are safeguard parameters scaled by the prescribed tolerance, not fitted separately for each test system.}
 
 \section{Numerical Dispersion in the Spatial Discretization of the Gas-Network PDEs}
 \label{app:numerical_dispersion}
